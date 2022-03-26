@@ -4,7 +4,7 @@ header.header
       #js-burger-toggle.hide-desktop
         a.header__link href="#"
           i.fa.fa-bars
-      a.header__link href="/"
+      a.header__link.header__link--logo href="/"
         i.fa.fw.favicon-home
         span.fa__text.hide-limited-desktop.hide-mobile
           ' OpenBooru

@@ -53,6 +53,14 @@ form.header__search {
   }
 }
 
+.header__link--logo {
+  display: inline-flex !important;
+
+  & > i {
+    margin-top: 0.7rem;
+  }
+}
+
 .header--secondary__admin-links {
   & > .header__link, & > .dropdown {
     border-top: 1px solid #e5e8eb !important;
