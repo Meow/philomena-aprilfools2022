@@ -1,5 +1,85 @@
 .header {
-  background: $header_color;
+  background: #ffffff;
+
+  .header__link, .header--secondary, .header__search__button, input, .js-staff-action, .header__link-user__dropdown-arrow {
+    -webkit-text-fill-color: #041034aa !important;
+    color: #041034aa !important;
+    background-color: #ffffff !important;
+  }
+
+  .header__link:hover, .header--secondary:hover, .header__search__button:hover, input:hover, .js-staff-action:hover, .header__link-user__dropdown-arrow:hover {
+    -webkit-text-fill-color: #000000 !important;
+    color: #000000 !important;
+    background-color: #f0f0f0 !important;
+  }
+
+  input {
+    border-left: 1px solid #e5e8eb;
+    border-top: 1px solid #e5e8eb;
+    border-bottom: 1px solid #e5e8eb;
+    border-radius: 8px 0 0 8px;
+  }
+
+  .header__search__button {
+    border-top: 1px solid #e5e8eb;
+    border-bottom: 1px solid #e5e8eb;
+  }
+
+  .header__search__button:last-child {
+    border-right: 1px solid #e5e8eb;
+    border-radius: 0 8px 8px 0;
+  }
+
+  select.header__input {
+    -webkit-text-fill-color: #041034aa !important;
+    color: #041034aa !important;
+    background-color: #ffffff !important;
+    border: 1px solid #e5e8eb;
+    border-radius: 8px;
+  }
+
+  select.header__input:hover {
+    -webkit-text-fill-color: #000000 !important;
+    color: #000000 !important;
+    background-color: #f0f0f0 !important;
+  }
+}
+
+form.header__search {
+  .js-staff-action {
+    border-left: 0 !important;
+    border-right: 0 !important;
+    border-radius: 0 !important;
+  }
+}
+
+.header--secondary__admin-links {
+  & > .header__link, & > .dropdown {
+    border-top: 1px solid #e5e8eb !important;
+    border-bottom: 1px solid #e5e8eb !important;
+  }
+
+  & > .dropdown:first-child {
+    .header__input {
+      border-radius: 8px 0 0 8px;
+    }
+  
+    border-left: 1px solid #e5e8eb !important;
+    border-radius: 8px 0 0 8px;
+  }
+
+  & > .dropdown:last-child {
+    .header__input {
+      border-radius: 0 8px 8px 0;
+    }
+
+    border-right: 1px solid #e5e8eb !important;
+    border-radius: 0 8px 8px 0;
+  }
+}
+
+.fa-search-button {
+  padding: 0 0.5rem;
 }
 
 .header__force-right {
@@ -53,6 +133,7 @@ i.fa-embedded--unread-message {
 }
 
 a.header__link {
+  font-weight: bold;
   display: inline-block;
   padding: 0 $header_spacing;
   line-height: $header_height;
@@ -92,8 +173,8 @@ select.header__input, select.header__input:focus {
   /* setting "appearance: none;" removes dropdown arrow; the solution is to create a custom one:
    * (based on http://stackoverflow.com/a/28274325) the first two items create left and right triangles
    * that match up to create an arrow, the third one specifies dropdown background */
-  background: linear-gradient(45deg, transparent 50%, $text_light_color 50%) calc(100% - 15px) 12px / 5px 5px no-repeat,
-              linear-gradient(135deg, $text_light_color 50%, transparent 50%) calc(100% - 10px) 12px / 5px 5px no-repeat;
+  background: linear-gradient(45deg, transparent 50%, #041034aa 50%) calc(100% - 15px) 18px / 5px 5px no-repeat,
+              linear-gradient(135deg, #041034aa  50%, transparent 50%) calc(100% - 10px) 18px / 5px 5px no-repeat;
   background-color: $header_field_color;
   /* prevent the custom arrow from overlapping the content */
   padding-right: 25px;
@@ -135,7 +216,7 @@ select.header__input, select.header__input:focus {
   // Chrome loves extra padding for some reason
   padding-top: 0;
   padding-bottom: 0;
-  line-height: $header_field_height;
+  line-height: $header_field_height - 2;
 
   background: $header_field_color;
   color: $text_light_color;
@@ -158,8 +239,8 @@ a.header__link-user {
 
 span.header__link-user__dropdown-arrow {
   padding: 0 9px;
-  background: linear-gradient(45deg, transparent 50%, $text_light_color 50%) calc(100% - 5px) 12px / 5px 5px no-repeat,
-              linear-gradient(135deg, $text_light_color 50%, transparent 50%) calc(100%) 12px / 5px 5px no-repeat;
+  background: linear-gradient(45deg, transparent 50%, #041034aa 50%) calc(100% - 5px) 12px / 5px 5px no-repeat,
+              linear-gradient(135deg, #041034aa 50%, transparent 50%) calc(100%) 12px / 5px 5px no-repeat;
   background-color: $header_color;
 }
 
@@ -169,7 +250,7 @@ span.header__link-user__dropdown-arrow:hover,
 }
 
 .header--secondary {
-  background: $header_secondary_color;
+  //background: $header_secondary_color;
   line-height: $header_sub_height;
 
   a {
@@ -188,6 +269,11 @@ span.header__link-user__dropdown-arrow:hover,
 
   span.header__counter {
     @include number-wrap($header_secondary_hover_color);
+  }
+
+  .header__link {
+    font-weight: normal !important;
+    font-size: 16px !important;
   }
 
 }

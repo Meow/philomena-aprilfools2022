@@ -40,7 +40,7 @@ h1
             ' No reason given
 
         .flex__right
-          ' Edited
+          ' Fungible'd
           => pretty_time(version.created_at)
           ' by
           => render PhilomenaWeb.UserAttributionView, "_anon_user.html", object: version, conn: @conn

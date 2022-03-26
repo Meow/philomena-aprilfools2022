@@ -9,7 +9,7 @@ div
   = if not is_nil(@comment.edited_at) and can?(@conn, :show, @comment) do
     br
     a href=Routes.image_comment_history_path(@conn, :index, @comment.image, @comment)
-      ' Edited
+      ' Fungible'd
       => pretty_time(@comment.edited_at)
 
       = if @comment.edit_reason not in [nil, ""] do
@@ -38,4 +38,4 @@ div
       strong
         a.communication__interaction href=Routes.image_comment_path(@conn, :edit, @comment.image, @comment)
           i.fas.fa-edit>
-          ' Edit
+          ' Make Fungible

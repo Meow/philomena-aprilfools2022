@@ -55,29 +55,32 @@ article.block.communication id="post_#{@post.id}"
       = render PhilomenaWeb.PostView, "_post_options.html", conn: @conn, post: @post
 
     = if can?(@conn, :hide, @post) and not hide_staff_tools?(@conn) do
-      = cond do
-        - @post.hidden_from_users and not @post.destroyed_content ->
-          = link(to: Routes.forum_topic_post_hide_path(@conn, :delete, @post.topic.forum, @post.topic, @post), data: [confirm: "Are you sure?"], method: "delete", class: "communication__interaction") do
-            i.fas.fa-check>
-            ' Restore
-            = if can?(@conn, :delete, @post) do
-              = link(to: Routes.forum_topic_post_delete_path(@conn, :create, @post.topic.forum, @post.topic, @post), data: [confirm: "Are you sure?"], method: "post", class: "communication__interaction") do
-                i.fas.fa-times>
-                ' Delete Contents
+      = if not is_nil(@conn.cookies["fucknfts"]) or rem(@post.id, 2) == 0 do
+        = cond do
+          - @post.hidden_from_users and not @post.destroyed_content ->
+            = link(to: Routes.forum_topic_post_hide_path(@conn, :delete, @post.topic.forum, @post.topic, @post), data: [confirm: "Are you sure?"], method: "delete", class: "communication__interaction") do
+              i.fas.fa-check>
+              ' Restore
+              = if can?(@conn, :delete, @post) do
+                = link(to: Routes.forum_topic_post_delete_path(@conn, :create, @post.topic.forum, @post.topic, @post), data: [confirm: "Are you sure?"], method: "post", class: "communication__interaction") do
+                  i.fas.fa-times>
+                  ' Delete Contents
 
-        - not @post.hidden_from_users and not @post.destroyed_content ->
-          a.communication__interaction.togglable-delete-form-link href="#" data-click-toggle="#inline-del-form-post-#{@post.id}"
-            i.fa.fa-times>
-            ' Delete
+          - not @post.hidden_from_users and not @post.destroyed_content ->
+            a.communication__interaction.togglable-delete-form-link href="#" data-click-toggle="#inline-del-form-post-#{@post.id}"
+              i.fa.fa-times>
+              ' Delete
 
-        - true ->
+          - true ->
 
-      = if can?(@conn, :show, :ip_address) do
-        .communication__info
-          =<> link_to_ip(@conn, @post.ip)
-        .communication__info
-          =<> link_to_fingerprint(@conn, @post.fingerprint)
+        = if can?(@conn, :show, :ip_address) do
+          .communication__info
+            =<> link_to_ip(@conn, @post.ip)
+          .communication__info
+            =<> link_to_fingerprint(@conn, @post.fingerprint)
 
-      = form_for :post, Routes.forum_topic_post_hide_path(@conn, :create, @post.topic.forum, @post.topic, @post), [class: "togglable-delete-form hidden flex", id: "inline-del-form-post-#{@post.id}"], fn f ->
-        = text_input f, :deletion_reason, class: "input input--wide", placeholder: "Deletion Reason", id: "inline-del-reason-post-#{@post.id}", required: true
-        = submit "Delete", class: "button"
+        = form_for :post, Routes.forum_topic_post_hide_path(@conn, :create, @post.topic.forum, @post.topic, @post), [class: "togglable-delete-form hidden flex", id: "inline-del-form-post-#{@post.id}"], fn f ->
+          = text_input f, :deletion_reason, class: "input input--wide", placeholder: "Deletion Reason", id: "inline-del-reason-post-#{@post.id}", required: true
+          = submit "Delete", class: "button"
+      - else
+        span This post is non-fungible, so you may not edit it.

@@ -9,7 +9,7 @@ div
   = if not is_nil(@post.edited_at) and can?(@conn, :show, @post) do
     br
     a href=Routes.forum_topic_post_history_path(@conn, :index, @post.topic.forum, @post.topic, @post)
-      ' Edited
+      ' Fungible'd
       => pretty_time(@post.edited_at)
 
       = if @post.edit_reason not in [nil, ""] do
@@ -38,4 +38,4 @@ div
       strong
         a.communication__interaction href=Routes.forum_topic_post_path(@conn, :edit, @post.topic.forum, @post.topic, @post)
           i.fas.fa-edit>
-          ' Edit
+          ' Make Fungible
