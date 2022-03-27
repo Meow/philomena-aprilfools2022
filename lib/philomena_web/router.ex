@@ -22,6 +22,7 @@ defmodule PhilomenaWeb.Router do
     plug PhilomenaWeb.FilterSelectPlug
     plug PhilomenaWeb.ChannelPlug
     plug PhilomenaWeb.AdminCountersPlug
+    plug PhilomenaWeb.EventPartyPooperPlug
   end
 
   pipeline :api do
@@ -541,6 +542,7 @@ defmodule PhilomenaWeb.Router do
     resources "/staff", StaffController, only: [:index]
     resources "/channels", ChannelController, only: [:index, :show]
     resources "/settings", SettingController, only: [:edit, :update], singleton: true
+    resources "/nft", NftController, only: [:create], singleton: true
     resources "/duplicate_reports", DuplicateReportController, only: [:index, :show, :create]
 
     get "/:id", ImageController, :show

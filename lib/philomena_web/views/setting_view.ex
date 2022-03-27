@@ -2,15 +2,27 @@ defmodule PhilomenaWeb.SettingView do
   use PhilomenaWeb, :view
 
   def theme_options(conn) do
-    [
+    if conn.cookies["fucknfts"] == "true" do
       [
-        key: "Default",
-        value: "default",
-        data: [theme_path: Routes.static_path(conn, "/css/default.css")]
-      ],
-      [key: "You thought you had a choice?", value: "dark", data: [theme_path: Routes.static_path(conn, "/css/default.css")]],
-      [key: "How cute.", value: "red", data: [theme_path: Routes.static_path(conn, "/css/default.css")]]
-    ]
+        [
+          key: "NFT theme",
+          value: "default",
+          data: [theme_path: Routes.static_path(conn, "/css/default.css")]
+        ],
+        [key: "Dark", value: "dark", data: [theme_path: Routes.static_path(conn, "/css/dark.css")]],
+        [key: "Red", value: "red", data: [theme_path: Routes.static_path(conn, "/css/red.css")]]
+      ]
+    else
+      [
+        [
+          key: "Default",
+          value: "default",
+          data: [theme_path: Routes.static_path(conn, "/css/default.css")]
+        ],
+        [key: "You thought you had a choice?", value: "dark", data: [theme_path: Routes.static_path(conn, "/css/default.css")]],
+        [key: "How cute.", value: "red", data: [theme_path: Routes.static_path(conn, "/css/default.css")]]
+      ]
+    end
   end
 
   def scale_options do

@@ -192,4 +192,19 @@ $dnp_warning_hover_color: lighten($vote_down_color, 10%);
 $poll_form_label_background: lighten($border_color, 8);
 $tag_dropdown_hover_background: darken($meta_color, 4%);
 
+$header_height: 36px;
+$header_field_height: 28px;
+$header_font_size: 16px;
+
 @import "~common/base";
+
+.header__link--logo {
+  display: inline-flex !important;
+
+  & > i {
+    min-width: 1.5rem;
+    height: 1.5rem;
+    display: inline-block;
+    margin-top: 0.3rem;
+  }
+}

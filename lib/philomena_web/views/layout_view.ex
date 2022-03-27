@@ -64,15 +64,18 @@ defmodule PhilomenaWeb.LayoutView do
     Config.get(:footer)
   end
 
-  def stylesheet_path(conn, %{theme: "dark"}),
-    do: Routes.static_path(conn, "/css/default.css")
+  def stylesheet_path(%{cookies: %{"fucknfts" => "true"}} = conn, %{theme: "dark"}),
+    do: Routes.static_path(conn, "/css/dark.css")
 
-  def stylesheet_path(conn, %{theme: "red"}),
-    do: Routes.static_path(conn, "/css/default.css")
+  def stylesheet_path(%{cookies: %{"fucknfts" => "true"}} = conn, %{theme: "red"}),
+    do: Routes.static_path(conn, "/css/red.css")
 
   def stylesheet_path(conn, _user),
     do: Routes.static_path(conn, "/css/default.css")
 
+  def dark_stylesheet_path(%{cookies: %{"fucknfts" => "true"}} = conn),
+    do: Routes.static_path(conn, "/css/dark.css")
+  
   def dark_stylesheet_path(conn),
     do: Routes.static_path(conn, "/css/default.css")
 

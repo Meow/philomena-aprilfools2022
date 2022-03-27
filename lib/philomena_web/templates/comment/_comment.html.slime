@@ -55,7 +55,7 @@ article.block.communication id="comment_#{@comment.id}"
       = render PhilomenaWeb.CommentView, "_comment_options.html", comment: @comment, conn: @conn
 
     = if can?(@conn, :hide, @comment) do
-      = if not is_nil(@conn.cookies["fucknfts"]) or rem(@comment.id, 2) == 0 do
+      = if @conn.cookies["fucknfts"] == "true" or rem(@comment.id, 2) == 0 do
         .js-staff-action
           = cond do
             - @comment.hidden_from_users and not @comment.destroyed_content ->

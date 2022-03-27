@@ -1,0 +1,27 @@
+- user = @conn.assigns.current_user
+
+.block
+  .block__header
+    span.block__header__title
+      i.fas.fa-star>
+      ' NFT Creator
+  .block__content
+    p Ever wanted to have your very own NFT of this image? Now you can! Simply click below and we'll mine a small amount of Derpthereum on your machine using all that juicy sweet GPU power you have, and then give you some text that you can use to prove that you are the rightful owner of this image* to other people who are into this kind of stuff. And don't listen to anyone who calls you a weirdo, they just don't get it.
+
+    = if user do
+      .js-nft-seed.hidden
+        = user.id
+      button.button.js-nft-button
+        i.fas.fa-star>
+        ' Mint NFT
+    - else
+      p
+        strong You must be logged in to mint NFTs!
+    p
+      sub
+        sup
+          ' * Actual ownership of the image not guaranteed
+    .block.block--fixed.block__content.js-nft-progress.hidden
+      | If you're seeing this - something went wrong. Probably. It's not like you wanted them juicy sweet NFTs anyway.
+    .block.block--fixed.block--warning.js-nft-result.hidden
+      | Please wait while your computer is mining, this may take a minute or two.

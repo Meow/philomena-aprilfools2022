@@ -171,6 +171,14 @@ h1 Content Settings
           => label f, :hide_staff_tools
           => checkbox f, :hide_staff_tools, checked: @conn.cookies["hide_staff_tools"] == "true"
           .fieldlabel: i Hide most of the staff tools (e.g. IPs, anon names) making your site appear as if you weren't staff, this is useful when browsing in public.
+      .field
+        => label f, :fucknfts, "Okay I am done with this event, please stop"
+        => checkbox f, :fucknfts, checked: @conn.cookies["fucknfts"] == "true"
+        .fieldlabel
+          i
+            ' An "exit button" for those who're too unfun to enjoy the chaos for one day in a year. Enables normal theme selector,
+            strong> but you will lose your event badge if you do so,
+            ' make this choice wisely!
 
     = if !@conn.assigns.current_user do
       .block__tab.hidden data-tab="join-the-herd"
