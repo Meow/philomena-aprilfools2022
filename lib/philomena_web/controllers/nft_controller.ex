@@ -31,7 +31,7 @@ defmodule PhilomenaWeb.NftController do
   end
 
   defp maybe_assign_badge(first_word, user_id) when first_word < (1 <<< (32 - 21)) do
-    badge = Repo.get_by(limit(Badge, 1), title: "Non-Fungible Booru")
+    badge = Repo.get_by(limit(Badge, 1), title: "Non-Fungible Trixie")
 
     if not is_nil(badge) do
       award = Repo.get_by(limit(Award, 1), badge_id: badge.id, user_id: user_id)
